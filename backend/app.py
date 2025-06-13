@@ -1,10 +1,12 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 from tasks import prioritize_tasks
 from notes import convert_speech_to_text
 from utils import get_weather, get_news, get_quote
+import os
 
 app = Flask(__name__)
 
+# --- API Routes ---
 @app.route('/api/prioritize', methods=['POST'])
 def prioritize():
     tasks = request.json.get('tasks', [])
@@ -29,5 +31,15 @@ def speech_to_text():
     text = convert_speech_to_text(audio_file)
     return jsonify({'text': text})
 
+# --- Serve Frontend Files ---
+@app.route('/')
+def serve_index():
+    return send_from_directory('../frontend', 'index.html')
+
+@app.route('/<path:path>')
+def serve_static(path):
+    return send_from_directory('../frontend', path)
+
+# --- Run App ---
 if __name__ == '__main__':
     app.run(debug=True)
