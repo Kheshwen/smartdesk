@@ -29,6 +29,28 @@
     <pre id="priorityOutput"></pre>
   </section>
 
-  <script src="script.js"></script>
+  <script>
+    async function prioritize() {
+      const input = document.getElementById("taskInput").value;
+      const tasks = input.split(",").map(t => t.trim()).filter(t => t.length > 0);
+
+      const response = await fetch("/api/prioritize", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ tasks })
+      });
+
+      const data = await response.json();
+
+      // Handle both string or list response
+      const output = Array.isArray(data.prioritized_tasks) 
+        ? data.prioritized_tasks.join("\n") 
+        : data.prioritized_tasks;
+
+      document.getElementById("priorityOutput").innerText = output;
+    }
+  </script>
 </body>
 </html>
