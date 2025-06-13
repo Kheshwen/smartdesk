@@ -1,4 +1,5 @@
 # Replace these with your own API keys
-OPENAI_API_KEY = "your_openai_key"
-WEATHER_API_KEY = "your_openweather_key"
-NEWS_API_KEY = "your_newsapi_key"
+OPENAI_API_KEY = "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"
+WEATHER_API_KEY = "6de3189dc6625b41ede5a3e3671a9cb4"
+NEWS_API_KEY = "1a931afcf2194ba4a538a20e426ec7b5"
+
