@@ -1,0 +1,14 @@
+smartdesk-dashboard/
+├── backend/
+│   ├── app.py
+│   ├── tasks.py
+│   ├── notes.py
+│   ├── utils.py
+│   └── config.py
+├── frontend/
+│   ├── index.html
+│   ├── styles.css
+│   └── script.js
+├── requirements.txt
+└── README.md
+
